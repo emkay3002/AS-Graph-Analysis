@@ -51,8 +51,11 @@ int main()
     // string bellmanOutput = "bellman_output.txt";
     // bellmanFordAlgorithm(graph, source, bellmanOutput);
 
-    string primsOutput = "prims_output.txt";
-    primsAlgorithm(graph, source, primsOutput);
+    // string primsOutput = "prims_output.txt";
+    // primsAlgorithm(graph, source, primsOutput);
+
+    string bfsOutput = "bfs_output.txt";
+    bfs(graph, source, bfsOutput);
 
     return 0;
 }
