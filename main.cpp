@@ -48,8 +48,11 @@ int main()
 
     // dijkstraAlgorithm(graph, source, outputFile);
 
-    string bellmanOutput = "bellman_output.txt";
-    bellmanFordAlgorithm(graph, source, bellmanOutput);
+    // string bellmanOutput = "bellman_output.txt";
+    // bellmanFordAlgorithm(graph, source, bellmanOutput);
+
+    string primsOutput = "prims_output.txt";
+    primsAlgorithm(graph, source, primsOutput);
 
     return 0;
 }
