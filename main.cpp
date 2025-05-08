@@ -16,7 +16,7 @@ Graph readGraphFromFile(const string &filePath)
     while (file >> u >> v >> w)
     {
         graph[u].push_back({v, w});
-        graph[v].push_back({u, w}); // comment this if directed
+        graph[v].push_back({u, w});
     }
 
     cout << "Graph Loaded:\n";
@@ -39,14 +39,17 @@ int main()
     cout << "------------------\n";
 
     string datasetFile = "weighted_edges.txt";
-    string outputFile = "dijkstra_output.txt";
+    // string outputFile = "dijkstra_output.txt";
     Graph graph = readGraphFromFile(datasetFile);
 
     int source;
     cout << "Enter source node: ";
     cin >> source;
 
-    dijkstraAlgorithm(graph, source, outputFile);
+    // dijkstraAlgorithm(graph, source, outputFile);
+
+    string bellmanOutput = "bellman_output.txt";
+    bellmanFordAlgorithm(graph, source, bellmanOutput);
 
     return 0;
 }

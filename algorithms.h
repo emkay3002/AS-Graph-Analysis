@@ -18,6 +18,7 @@ struct Edge
 using Graph = unordered_map<int, vector<Edge>>;
 
 void dijkstraAlgorithm(const Graph &graph, int source, const string &outputFilePath);
+void bellmanFordAlgorithm(const Graph &graph, int source, const string &outputFilePath);
 void primAlgorithm();
 void kruskalAlgorithm();
 
