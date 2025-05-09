@@ -60,8 +60,11 @@ int main()
     // string dfsRecursiveOutput = "dfs_recursive_output.txt";
     // dfs(graph, source, dfsRecursiveOutput);
 
-    string kruskalOutput = "kruskal_output.txt";
-    kruskalAlgorithm(graph, kruskalOutput);
+    // string kruskalOutput = "kruskal_output.txt";
+    // kruskalAlgorithm(graph, kruskalOutput);
+
+    // string diameterOutput = "diameter_output.txt";
+    // computeGraphDiameter(graph, diameterOutput);
 
     return 0;
 }

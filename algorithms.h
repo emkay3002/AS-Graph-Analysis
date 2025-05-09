@@ -23,5 +23,6 @@ void primsAlgorithm(const Graph &graph, int start, const std::string &outputFile
 void bfs(const Graph &graph, int start, const string &outputFile);
 void dfs(const Graph &graph, int start, const string &outputFilePath);
 void kruskalAlgorithm(const Graph &graph, const string &outputFilePath);
-
+void computeGraphDiameter(const Graph &graph, const string &outputFilePath);
+// void computeGraphDiameter(const Graph &graph, const string &outputFilePath, int maxNodesToProcess = -1);
 #endif
