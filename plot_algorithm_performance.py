@@ -41,6 +41,49 @@ def measure_bellman_ford(graph, source):
     end = time.time()
     return end - start
 
+# Function to measure execution time for Prim's Algorithm
+def measure_prims(graph):
+    start = time.time()
+    nx.minimum_spanning_tree(graph)
+    end = time.time()
+    return end - start
+
+# Function to measure execution time for Kruskal's Algorithm
+def measure_kruskal(graph):
+    start = time.time()
+    list(nx.minimum_spanning_edges(graph, data=False))
+    end = time.time()
+    return end - start
+
+# Function to measure execution time for BFS
+def measure_bfs(graph, source):
+    start = time.time()
+    nx.bfs_edges(graph, source)
+    end = time.time()
+    return end - start
+
+# Function to measure execution time for DFS
+def measure_dfs(graph, source):
+    start = time.time()
+    nx.dfs_edges(graph, source)
+    end = time.time()
+    return end - start
+
+# Function to measure execution time for Cycle Detection
+def measure_cycle_detection(graph):
+    start = time.time()
+    cycle = nx.find_cycle(graph, orientation='ignore')
+    end = time.time()
+    return end - start
+
+# Function to measure the graph's diameter
+def measure_diameter(graph):
+    if nx.is_connected(graph):  # Check if the graph is connected
+        diameter = nx.diameter(graph)
+        return diameter
+    else:
+        return None  # Return None or any other value indicating the graph is not connected
+
 # Function to run comparisons and save to CSV
 def compare_algorithms():
     results = []
@@ -59,8 +102,14 @@ def compare_algorithms():
                     # Measure time for each algorithm
                     dijkstra_time = measure_dijkstra(graph, source)
                     bellman_ford_time = measure_bellman_ford(graph, source)
+                    prims_time = measure_prims(graph)
+                    kruskal_time = measure_kruskal(graph)
+                    bfs_time = measure_bfs(graph, source)
+                    dfs_time = measure_dfs(graph, source)
+                    cycle_detection_time = measure_cycle_detection(graph)
+                    diameter_time = measure_diameter(graph)
 
-                    # Save results to CSV
+                    # Save results to CSV for each algorithm
                     result = {
                         'Algorithm': 'Dijkstra',
                         'Nodes': nodes,
@@ -79,6 +128,62 @@ def compare_algorithms():
                     }
                     results.append(result)
 
+                    result = {
+                        'Algorithm': 'Prim\'s',
+                        'Nodes': nodes,
+                        'Edges': 2 * nodes,
+                        'Graph Type': f'{graph_type}-{density}-{ "Weighted" if weighted else "Unweighted" }',
+                        'Execution Time': prims_time * 1000  # Convert to ms
+                    }
+                    results.append(result)
+
+                    result = {
+                        'Algorithm': 'Kruskal\'s',
+                        'Nodes': nodes,
+                        'Edges': 2 * nodes,
+                        'Graph Type': f'{graph_type}-{density}-{ "Weighted" if weighted else "Unweighted" }',
+                        'Execution Time': kruskal_time * 1000  # Convert to ms
+                    }
+                    results.append(result)
+
+                    result = {
+                        'Algorithm': 'BFS',
+                        'Nodes': nodes,
+                        'Edges': 2 * nodes,
+                        'Graph Type': f'{graph_type}-{density}-{ "Weighted" if weighted else "Unweighted" }',
+                        'Execution Time': bfs_time * 1000  # Convert to ms
+                    }
+                    results.append(result)
+
+                    result = {
+                        'Algorithm': 'DFS',
+                        'Nodes': nodes,
+                        'Edges': 2 * nodes,
+                        'Graph Type': f'{graph_type}-{density}-{ "Weighted" if weighted else "Unweighted" }',
+                        'Execution Time': dfs_time * 1000  # Convert to ms
+                    }
+                    results.append(result)
+
+                    result = {
+                        'Algorithm': 'Cycle Detection',
+                        'Nodes': nodes,
+                        'Edges': 2 * nodes,
+                        'Graph Type': f'{graph_type}-{density}-{ "Weighted" if weighted else "Unweighted" }',
+                        'Execution Time': cycle_detection_time * 1000  # Convert to ms
+                    }
+                    results.append(result)
+
+                    # Handle the case when the graph is not connected for Diameter
+                    if diameter_time is not None:
+                        result = {
+                            'Algorithm': 'Diameter',
+                            'Nodes': nodes,
+                            'Edges': 2 * nodes,
+                            'Graph Type': f'{graph_type}-{density}-{ "Weighted" if weighted else "Unweighted" }',
+                            'Execution Time': diameter_time * 1000  # Convert to ms
+                        }
+                        results.append(result)
+
     # Write results to CSV
     with open('algorithm_comparison.csv', mode='w', newline='') as file:
         writer = csv.DictWriter(file, fieldnames=['Algorithm', 'Nodes', 'Edges', 'Graph Type', 'Execution Time'])
@@ -86,16 +191,17 @@ def compare_algorithms():
         writer.writerows(results)
 
 # Step 2: Generate plots
+# Step 2: Generate plots with multiple pages or groups of plots for better readability
 def generate_plots():
     # Read the CSV file to analyze the results
     data = pd.read_csv('algorithm_comparison.csv')
     
     # Standardize algorithm names
     data['Algorithm'] = data['Algorithm'].replace({
-        'BellmanFord': 'BellmanFord',
+        'BellmanFord': 'Bellman-Ford',
         'Dijkstra': 'Dijkstra',
-        'Prims': 'Prims',
-        'Kruskal': 'Kruskal',
+        'Prims': 'Prim\'s',
+        'Kruskal': 'Kruskal\'s',
         'BFS': 'BFS',
         'DFS': 'DFS',
         'Diameter': 'Diameter',
@@ -104,29 +210,37 @@ def generate_plots():
     
     algorithms = data['Algorithm'].unique()
     
-    # Plot setup
-    plt.figure(figsize=(15, 10))
+    # Define the number of plots per page (1 or 2 per page)
+    plots_per_page = 2  # You can change this value to 1 or 2
     
-    # Create a subplot for each algorithm
-    for i, algorithm in enumerate(algorithms):
-        # Filter data for the current algorithm
-        algorithm_data = data[data['Algorithm'] == algorithm]
+    for start_idx in range(0, len(algorithms), plots_per_page):
+        # Create a new figure for the current set of plots
+        plt.figure(figsize=(15, 10))
         
-        # Create a subplot (adjust the number of rows/columns as needed)
-        plt.subplot(3, 3, i + 1)
+        # Iterate through the algorithms for this page
+        for i, algorithm in enumerate(algorithms[start_idx:start_idx + plots_per_page]):
+            # Filter data for the current algorithm
+            algorithm_data = data[data['Algorithm'] == algorithm]
+            
+            # Create a subplot for each algorithm
+            plt.subplot(1, plots_per_page, i + 1)
+            
+            # Plot the data (using lineplot with different hues for graph types)
+            sns.lineplot(x='Nodes', y='Execution Time', data=algorithm_data, hue='Graph Type', marker='o')
+            
+            # Set titles and labels
+            plt.title(f'{algorithm} Execution Time')
+            plt.xlabel('Number of Nodes')
+            plt.ylabel('Execution Time (ms)')
+            plt.legend(title='Graph Type', bbox_to_anchor=(1.05, 1), loc='upper left')
         
-        # Plot the data (using lineplot with different hues for graph types)
-        sns.lineplot(x='Nodes', y='Execution Time', data=algorithm_data, hue='Graph Type', marker='o')
+        # Adjust layout for better spacing between subplots
+        plt.tight_layout()
         
-        # Set titles and labels
-        plt.title(f'{algorithm} Execution Time')
-        plt.xlabel('Number of Nodes')
-        plt.ylabel('Execution Time (ms)')
-        plt.legend(title='Graph Type', bbox_to_anchor=(1.05, 1), loc='upper left')
-    
-    plt.tight_layout()  # Adjust layout for better spacing between subplots
-    plt.show()
+        # Show the current page of plots
+        plt.show()
 
 # Running the comparison and generating plots
 compare_algorithms()
 generate_plots()
+
