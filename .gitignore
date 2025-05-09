@@ -1,0 +1,42 @@
+# Ignore trace and log files
+trace_*.txt
+*.log
+
+# Ignore build artifacts
+*.o
+*.out
+*.obj
+*.exe
+*.a
+*.so
+*.dll
+*.dSYM/
+build/
+cmake-build-*/
+
+# Ignore IDE/editor-specific files
+.vscode/
+.idea/
+*.code-workspace
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore generated output and reports
+*.csv
+*.tmp
+*.dat
+*.json
+
+# Ignore backup files
+*~
+*.swp
+
+# Ignore user-defined large files
+*.bak
+*.old
+
+# Add specific large files
+trace_diameter.txt
+trace_bellman.txt
