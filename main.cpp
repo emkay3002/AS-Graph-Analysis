@@ -33,6 +33,21 @@ Graph readGraphFromFile(const string &filePath)
     return graph;
 }
 
+double calculateAverageDegree(const Graph &graph)
+{
+    int totalEdges = 0;
+    int totalNodes = graph.size();
+
+    // Count the number of edges
+    for (const auto &node : graph)
+    {
+        totalEdges += node.second.size(); // degree of node
+    }
+
+    // Since each edge is counted twice (once for each node), divide by 2
+    return static_cast<double>(totalEdges) / totalNodes;
+}
+
 int main()
 {
     cout << "AS Graph Analysis\n";
@@ -42,6 +57,10 @@ int main()
     // string outputFile = "dijkstra_output.txt";
     Graph graph = readGraphFromFile(datasetFile);
     // unordered_map<int, vector<Edge>> graph; // when im detecting cycle
+
+    // Calculate and print the average degree
+    double avgDegree = calculateAverageDegree(graph);
+    cout << "Average Degree of the Graph: " << avgDegree << endl;
     int source;
     cout << "Enter source node: ";
     cin >> source;
@@ -67,8 +86,8 @@ int main()
     // computeGraphDiameter(graph, diameterOutput);
 
     // ignore it asking for source node, it does nothing
-    string cycleDetectionResultFile = "cycle_detection_result.txt";
-    checkForCycleInGraph(graph, cycleDetectionResultFile);
+    // string cycleDetectionResultFile = "cycle_detection_result.txt";
+    // checkForCycleInGraph(graph, cycleDetectionResultFile);
 
     return 0;
 }
