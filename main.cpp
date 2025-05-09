@@ -57,8 +57,11 @@ int main()
     // string bfsOutput = "bfs_output.txt";
     // bfs(graph, source, bfsOutput);
 
-    string dfsRecursiveOutput = "dfs_recursive_output.txt";
-    dfs(graph, source, dfsRecursiveOutput);
+    // string dfsRecursiveOutput = "dfs_recursive_output.txt";
+    // dfs(graph, source, dfsRecursiveOutput);
+
+    string kruskalOutput = "kruskal_output.txt";
+    kruskalAlgorithm(graph, kruskalOutput);
 
     return 0;
 }

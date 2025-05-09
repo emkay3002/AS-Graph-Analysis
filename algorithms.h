@@ -22,6 +22,6 @@ void bellmanFordAlgorithm(const Graph &graph, int source, const string &outputFi
 void primsAlgorithm(const Graph &graph, int start, const std::string &outputFilePath);
 void bfs(const Graph &graph, int start, const string &outputFile);
 void dfs(const Graph &graph, int start, const string &outputFilePath);
-void kruskalAlgorithm();
+void kruskalAlgorithm(const Graph &graph, const string &outputFilePath);
 
 #endif
