@@ -41,7 +41,7 @@ int main()
     string datasetFile = "weighted_edges.txt";
     // string outputFile = "dijkstra_output.txt";
     Graph graph = readGraphFromFile(datasetFile);
-
+    // unordered_map<int, vector<Edge>> graph; // when im detecting cycle
     int source;
     cout << "Enter source node: ";
     cin >> source;
@@ -65,6 +65,9 @@ int main()
 
     // string diameterOutput = "diameter_output.txt";
     // computeGraphDiameter(graph, diameterOutput);
+
+    string cycleDetectionResultFile = "cycle_detection_result.txt";
+    checkForCycleInGraph(graph, cycleDetectionResultFile);
 
     return 0;
 }

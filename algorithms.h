@@ -25,4 +25,10 @@ void dfs(const Graph &graph, int start, const string &outputFilePath);
 void kruskalAlgorithm(const Graph &graph, const string &outputFilePath);
 void computeGraphDiameter(const Graph &graph, const string &outputFilePath);
 // void computeGraphDiameter(const Graph &graph, const string &outputFilePath, int maxNodesToProcess = -1);
+// void cycleUndirected(const Graph &graph, const std::string &outputFilePath);
+// void detectCycleDirected(const Graph &graph, const std::string &outputFilePath);
+bool detectCycle(unordered_map<int, vector<Edge>> &graph, int currentNode, unordered_map<int, bool> &visitedNodes, int parentNode);
+// void detectCycle(const Graph &graph, const string &resultFilePath);
+void checkForCycleInGraph(unordered_map<int, vector<Edge>> &graph, const string &outputFilePath);
+
 #endif
