@@ -66,6 +66,7 @@ int main()
     // string diameterOutput = "diameter_output.txt";
     // computeGraphDiameter(graph, diameterOutput);
 
+    // ignore it asking for source node, it does nothing
     string cycleDetectionResultFile = "cycle_detection_result.txt";
     checkForCycleInGraph(graph, cycleDetectionResultFile);
 
