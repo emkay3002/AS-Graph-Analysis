@@ -6474,4 +6474,4 @@ To 5665: Distance = 16 | Path: 6 -> 4640 -> 1103 -> 5665
 To 598: Distance = 5 | Path: 6 -> 51 -> 598
 To 5685: Distance = 13 | Path: 6 -> 47 -> 41 -> 673 -> 5685
 
-Execution Time: 91.3199 seconds
+Execution Time: 44.2567 seconds

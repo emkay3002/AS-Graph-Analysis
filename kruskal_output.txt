@@ -6474,4 +6474,4 @@ Kruskal's Minimum Spanning Tree:
 6253 - 6254 (Weight: 10)
 
 Total Weight of MST: 27456
-Execution Time: 0.0762577 seconds
+Execution Time: 0.0237426 seconds

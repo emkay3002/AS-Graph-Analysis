@@ -116,9 +116,9 @@ int main()
     // Calculate and print the average degree
     // double avgDegree = calculateAverageDegree(graph);
     // cout << "Average Degree of the Graph: " << avgDegree << endl;
-    // int source;
-    // cout << "Enter source node: ";
-    // cin >> source;
+    int source;
+    cout << "Enter source node: ";
+    cin >> source;
 
     // dijkstraAlgorithm(graph, source, outputFile);
 
@@ -134,8 +134,8 @@ int main()
     // string dfsRecursiveOutput = "dfs_recursive_output.txt";
     // dfs(graph, source, dfsRecursiveOutput);
 
-    // string kruskalOutput = "kruskal_output.txt";
-    // kruskalAlgorithm(graph, kruskalOutput);
+    string kruskalOutput = "kruskal_output.txt";
+    kruskalAlgorithm(graph, kruskalOutput);
 
     // string diameterOutput = "diameter_output.txt";
     // computeGraphDiameter(graph, diameterOutput);
@@ -144,19 +144,19 @@ int main()
     // string cycleDetectionResultFile = "cycle_detection_result.txt";
     // checkForCycleInGraph(graph, cycleDetectionResultFile);
 
-    vector<tuple<string, string>> outputs = {
-        {"Dijkstra", "dijkstra_output.txt"},
-        {"BellmanFord", "bellman_output.txt"},
-        {"Prims", "prims_output.txt"},
-        {"Kruskal", "kruskal_output.txt"},
-        {"BFS", "bfs_output.txt"},
-        {"DFS", "dfs_recursive_output.txt"},
-        {"Diameter", "diameter_output.txt"},
-        {"CycleDetection", "cycle_detection_result.txt"}};
+    // vector<tuple<string, string>> outputs = {
+    //     {"Dijkstra", "dijkstra_output.txt"},
+    //     {"BellmanFord", "bellman_output.txt"},
+    //     {"Prims", "prims_output.txt"},
+    //     {"Kruskal", "kruskal_output.txt"},
+    //     {"BFS", "bfs_output.txt"},
+    //     {"DFS", "dfs_recursive_output.txt"},
+    //     {"Diameter", "diameter_output.txt"},
+    //     {"CycleDetection", "cycle_detection_result.txt"}};
 
-    int edges = getEdgeCount(graph);
-    string graphType = "Undirected-Weighted";
-    collectDetailedExecutionTimesToCSV(outputs, graph, graphType, "execution_times_detailed.csv");
+    // int edges = getEdgeCount(graph);
+    // string graphType = "Undirected-Weighted";
+    // collectDetailedExecutionTimesToCSV(outputs, graph, graphType, "execution_times_detailed.csv");
 
     return 0;
 }
