@@ -54,8 +54,11 @@ int main()
     // string primsOutput = "prims_output.txt";
     // primsAlgorithm(graph, source, primsOutput);
 
-    string bfsOutput = "bfs_output.txt";
-    bfs(graph, source, bfsOutput);
+    // string bfsOutput = "bfs_output.txt";
+    // bfs(graph, source, bfsOutput);
+
+    string dfsRecursiveOutput = "dfs_recursive_output.txt";
+    dfs(graph, source, dfsRecursiveOutput);
 
     return 0;
 }

@@ -21,7 +21,7 @@ void dijkstraAlgorithm(const Graph &graph, int source, const string &outputFileP
 void bellmanFordAlgorithm(const Graph &graph, int source, const string &outputFilePath);
 void primsAlgorithm(const Graph &graph, int start, const std::string &outputFilePath);
 void bfs(const Graph &graph, int start, const string &outputFile);
-
+void dfs(const Graph &graph, int start, const string &outputFilePath);
 void kruskalAlgorithm();
 
 #endif

@@ -26,7 +26,7 @@ void bfs(const Graph &graph, int start, const string &outputFilePath)
     {
         int node = q.front();
         q.pop();
-        traceFile << "Removed from queue: " << node << "\n";
+        traceFile << "Dequeued: " << node << "\n";
 
         if (visited.count(node))
             continue;
